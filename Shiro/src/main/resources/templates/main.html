@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}" media="all">
+    <title>存证溯源验证系统主页面</title>
+</head>
+<body>
+<div class="container">
+    <h1>
+        欢迎使用存证溯源系统
+    </h1>
+    <br>
+    登录用户为：<span th:text="${session.user}"></span>
+    <br>
+    <a href="/logout">登出</a>
+    <br>
+    <a shiro:hasRole="admin" href="/myController/userLoginRoles">测试授权-角色验证</a>
+    <br>
+    <a shiro:hasPermission="user:delete" href="/myController/userPermissions">测试授权-权限验证</a>
+    <div class="box1">
+        <form action="" name="form1">
+            <button onclick="window.location.href='/myController/save'" type="button" class="btn" >点我跳转存文件页面!</button>
+            <br>
+            <button onclick="window.location.href='/myController/get'" type="button" class="button" >点我跳转取文件页面!</button>
+            <br>
+            <button shiro:hasRole="admin" onclick="window.location.href='/myController/delete'" type="button" class="bt" >点我跳转删文件页面!</button>
+        </form>
+    </div>
+</div>
+</body>
+<script type="text/javascript" th:inline="javascript">
+    onload = function() {
+        var successloginMessage = /*[[${successloginMessage}]]*/ '';
+        var errorloginMessage = /*[[${errorloginMessage}]]*/ '';
+        var successregisterMessage = /*[[${successloginregisterMessage}]]*/ '';
+        var errorloginregisterMessage = /*[[${errorloginregisterMessage}]]*/ '';
+
+        if (successloginMessage) {
+            showAlertDialog('登录成功', successloginMessage);
+        }
+
+        if (errorloginMessage) {
+            showAlertDialog('登录失败', errorloginMessage);
+        }
+        if (successregisterMessage) {
+            showAlertDialog('注册成功', successregisterMessage);
+        }
+
+        if (errorloginregisterMessage) {
+            showAlertDialog('注册失败', errorregisterMessage);
+        }
+
+        function showAlertDialog(title, content) {
+            window.alert(title + "\n\n" + content);
+        }
+    };
+</script>
+</html>

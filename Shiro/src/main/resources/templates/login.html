@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" th:href="@{/css/login.css}" media="all">
+    <title>存证溯源验证系统</title>
+
+</head>
+<body>
+<div class="container">
+    <div class="box1">
+        <form action="/myController/userLogin"  name="form1" id="form">
+            <h1>
+                login
+            </h1>
+            <label>用户名<input class="acc1" type="text" placeholder="请输入用户名" name="username" ></label>
+            <label>&nbsp&nbsp&nbsp密码<input class="acc2" type="password" placeholder="请输入密码" name="password" ></label>
+            <input class="submit" type="submit" name="submit" value="登录" />
+            <!-- //nbsp提供空格用来对其齐 -->
+        </form>
+        <div class="box2">
+            <form action="/myController/userLogin" name="form2">
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input  type="checkbox" name="rememberMe" value="true">记住用户名
+                <!-- checbox提供一种小框 -->
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <a href="/myController/register">点击注册一个用户</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" th:inline="javascript">
+    onload = function() {
+        var successloginMessage = /*[[${successloginMessage}]]*/ '';
+        var errorloginMessage = /*[[${errorloginMessage}]]*/ '';
+        var successregisterMessage = /*[[${successregisterMessage}]]*/ '';
+        var errorloginregisterMessage = /*[[${errorregisterMessage}]]*/ '';
+
+        if (successloginMessage) {
+            showAlertDialog('登录成功', successloginMessage);
+        }
+
+        if (errorloginMessage) {
+            showAlertDialog('登录失败', errorloginMessage);
+        }
+        if (successregisterMessage) {
+            showAlertDialog('注册成功', successregisterMessage);
+        }
+
+        if (errorloginregisterMessage) {
+            showAlertDialog('注册失败', errorregisterMessage);
+        }
+
+        function showAlertDialog(title, content) {
+            window.alert(title + "\n\n" + content);
+        }
+    };
+</script>
+</html>

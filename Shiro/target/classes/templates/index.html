@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>存证溯源验证系统</title>
+
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/web3.min.js"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>智能合约</h1>
+            <p>使用 web3.js 调用以太坊智能合约存取文件哈希</p>
+        </div>
+        <div class="jumbotron">
+            <form class="bs-example bs-example-form" role="form">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                            fileHash:<br>
+                            <input type="text" class="form-control" id="fileHash">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                        author:<br>
+                        <input type="text" class="form-control" id="author">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                        fileName:<br>
+                        <input type="text" class="form-control" id="fileName">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                        time:<br>
+                        <input type="text" class="form-control" id="time">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                        <span class="input-group-btn">
+                        <button id="setValue" class="btn btn-default btn btn-danger" type="button">
+                            存入文件哈希值：
+                        </button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div>
+                <!-- <input type="submit" value="submit"> -->
+            </form>
+        </div>
+        <div class="jumbotron">
+            <form class="bs-example bs-example-form" role="form">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                            fileName:<br>
+                            <input type="text" class="form-control" id="fileName">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default  btn-success" type="button" id="getValue">
+                            获得文件哈希值：
+                        </button>
+                        </span>
+                        <input type="text" id="spanvalue" class="form-control">
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 ">
+                <div id="msg" class="alert alert-danger"></div>
+            </div>
+        </div>
+        <script>
+            if (window.ethereum) {
+                //连接到Metamask
+                web3 = new Web3(window.ethereum);
+            } else {
+                ///直接连接到Ganache
+                web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
+            }
+
+            //读取合约的ABI信息
+            var data = $.ajax({ url: "/json/Storage.json", async: false }).responseText;
+
+            //创建合约对象，使用的合约地址是我们刚创建的合约地址
+            var contract = new web3.eth.Contract(JSON.parse(data), '0x2d09163409e8EAbc9ef4B800b5153470e1F3F813');
+
+            $("#setValue").click(function () {
+                try {                                 
+                    //window.ethereum.enable();
+                    contract.methods.saveEvidence($("#fileHash").val(),$("#author").val(),$("#fileName").val(),$("#time").val()).send({ from: '0xA34A12660e09906C7D725F92884f67fDBCc25f00' });
+                    $("#msg").text("设置值成功！");
+                }
+                catch (err) {
+                    $("#msg").text("设置值失败：" + err.message);
+                }
+            });
+
+            $("#getValue").click(function () {
+                try{
+                    contract.methods.getEvidence($("#fileName").val()).call({ from: '0xA34A12660e09906C7D725F92884f67fDBCc25f00' }).then(function (result) {
+                        $("#spanvalue").val(result);
+                        $("#msg").text("获取值成功！");
+                    });
+                }
+                catch(err){
+                    $("#msg").text("获取值失败：" + err.message);
+                }
+
+            });
+
+        </script>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/css/save.css}" media="all">
+  <title>存证溯源验证系统</title>
+</head>
+
+<body>
+<div class="container">
+  <div class="box1">
+    <form action="/myController/setValue" name="form1">
+      <h1>
+        存文件页面
+      </h1>
+      名称<input class="acc1" type="text" placeholder="请输入文件名" name="fileName">
+      <br>
+      作者<input class="acc1" type="text" placeholder="请输入文件作者" name="author">
+      <br>
+      哈希<input class="acc1" type="text" placeholder="请输入文件哈希" name="fileHash">
+      <br>
+      时间<input class="acc1" type="text" placeholder="请输入文件时间" name="time">
+      <br>
+      <div style="text-align: center;"><input class="submit" type="submit" value="上链"></div>
+    </form>
+    <div class="box2">
+      <a href="/myController/main">回到主界面</a>
+    </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" th:inline="javascript">
+  onload = function() {
+    var successtransactionMessage = /*[[${successtransactionMessage}]]*/ '';
+    var errortransactionMessage = /*[[${errortransactionMessage}]]*/ '';
+
+    if (successtransactionMessage) {
+      showAlertDialog('上链成功', successtransactionMessage);
+    }
+
+    if (errortransactionMessage) {
+      showAlertDialog('上链失败', errortransactionMessage);
+    }
+
+    function showAlertDialog(title, content) {
+      window.alert(title + "\n\n" + content);
+    }
+  };
+</script>
+</html>
+

@@ -1,0 +1,209 @@
+html::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index:-1;
+    background:linear-gradient(135deg, #FFf886 10%,#f072b6 100%);;
+}
+h1{
+    text-align: center;
+}
+.container{
+    width: 600px;
+    height: 300px;
+    margin-top: 30vh;
+    margin-left:auto;
+    margin-right:auto;
+    background:rgba(255,255,255,0.4);
+    border-radius:1.5rem;
+    font-size:20px;
+}
+
+.box1{
+    text-align: center;
+    width:70%;
+    margin:auto;
+    padding-top:5px;
+    align-items:center;
+}
+.box2{
+    margin-top: 10px;
+
+}
+.box3{
+    text-align: center;
+    width:100%;
+    margin:auto;
+    padding-top:5px;
+    align-items:center;
+}
+.acc1{
+    height: 40px;
+    width:63%;
+    margin-left:50px;
+    margin-top:10px;
+    margin-bottom:10px ;
+    border:none;
+    background:rgba(255,255,255,0.4);
+    border-radius:25px;
+    font-size:18px;
+    /*background-image:url("");*/
+    background-size:25px;
+    background-repeat:no-repeat;
+    padding-left:40px;
+}
+.acc2{
+    height: 40px;
+    width:63%;
+    margin-left:50px;
+    margin-top:10px;
+    margin-bottom:10px ;
+    border:none;
+    background:rgba(255,255,255,0.4);
+    border-radius:25px;
+    font-size:18px;
+    /*background-image:url("");*/
+    background-size:25px;
+    background-repeat:no-repeat;
+    padding-left:40px;
+}
+
+a{
+    text-decoration:none ;
+    color:#666666;
+
+}
+.submit{
+    text-align: center;
+    margin-top:20px;
+    font-size:20px;
+    width:130px;
+    height:50px;
+    border:none;
+    background-color: rgba(255,255,255,0.4);
+    color:#666666;
+    border-radius:30px;
+}
+.button {
+    display: inline-block;
+    border-radius: 15px;
+    background-color:darkorange;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 410px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.button span:after {
+    content: '\00bb';  /* CSS Entities. 如果用的是 HTML Entities, 请改成 &#8594;*/
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.button:hover span {
+    padding-right: 25px;
+}
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.btn {
+    display: inline-block;
+    border-radius: 15px;
+    background-color:cornflowerblue;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 410px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+.btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.btn span:after {
+    content: '\00bb';  /* CSS Entities. 如果用的是 HTML Entities, 请改成 &#8594;*/
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.btn:hover span {
+    padding-right: 25px;
+}
+.btn:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.acc3{
+    height: 40px;
+    width:30%;
+    margin-left:50px;
+    margin-top:10px;
+    margin-bottom:10px ;
+    border:none;
+    background:rgba(255,255,255,0.4);
+    border-radius:25px;
+    font-size:18px;
+    /*background-image:url("");*/
+    background-size:25px;
+    background-repeat:no-repeat;
+    padding-left:40px;
+}
+.canvas{
+    position:absolute;
+    top: 638px;
+    width: 120px;
+    height: 40px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.acc4{
+    height: 50px;
+    width: 65%;
+    margin-left:50px;
+    margin-top:10px;
+    margin-bottom:10px ;
+    border:none;
+    background:rgba(255,255,255,0.4);
+    border-radius:25px;
+    font-size:18px;
+    /*background-image:url("");*/
+    background-size:25px;
+    background-repeat:no-repeat;
+    padding-left:40px;
+}
+.submit2{
+    text-align: center;
+    margin-top:20px;
+    font-size:20px;
+    width:220px;
+    height:50px;
+    border:none;
+    background-color: rgba(255,255,255,0.4);
+    color:#666666;
+    border-radius:30px;
+}

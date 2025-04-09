@@ -1,0 +1,79 @@
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "fileName",
+				"type": "string"
+			},
+			{
+				"name": "author",
+				"type": "string"
+			},
+			{
+				"name": "fileHash",
+				"type": "string"
+			},
+			{
+				"name": "time",
+				"type": "string"
+			}
+		],
+		"name": "saveEvidence",
+		"outputs": [
+			{
+				"name": "code",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "fileName",
+				"type": "string"
+			}
+		],
+		"name": "getEvidence",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "fileHash",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "author",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "fileName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "time",
+				"type": "string"
+			}
+		],
+		"name": "updateInfo",
+		"type": "event"
+	}
+]
